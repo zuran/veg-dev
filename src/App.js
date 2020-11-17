@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,40 +7,128 @@ import {
   useRouteMatch,
   useParams,
 } from 'react-router-dom';
+import {
+  AppBar,
+  BottomNavigation,
+  BottomNavigationAction,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  createMuiTheme,
+  ThemeProvider,
+} from '@material-ui/core';
+import { AccountTree, Home, Person } from '@material-ui/icons';
+
+import ProjectsRoute from './routes/projects';
 
 export default function App() {
-  return (
-    <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/topics">Topics</Link>
-          </li>
-        </ul>
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: '#a5d6a7',
+      },
+    },
+  });
 
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/topics">
-            <Topics />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+  const [value, setValue] = useState(0);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Router>
+        <div>
+          <List component="nav">
+            <ListItem button component={Link} to="/">
+              <ListItemText primary="Home" />
+            </ListItem>
+          </List>
+          <ul>
+            <li>
+              <Button
+                component={Link}
+                to="/"
+                variant="contained"
+                color="primary"
+              >
+                Home
+              </Button>
+            </li>
+            <li>
+              <Button
+                component={Link}
+                to="/about"
+                variant="contained"
+                color="primary"
+              >
+                About
+              </Button>
+            </li>
+            <li>
+              <Button
+                component={Link}
+                to="/topics"
+                variant="contained"
+                color="primary"
+              >
+                Topics
+              </Button>
+            </li>
+          </ul>
+
+          <Switch>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/topics">
+              <ProjectsRoute />
+            </Route>
+            <Route path="/">
+              <Home2 />
+            </Route>
+          </Switch>
+
+          <AppBar
+            position="fixed"
+            color="primary"
+            style={{ top: 'auto', bottom: 0 }}
+          >
+            <BottomNavigation
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+              showLabels
+            >
+              <BottomNavigationAction
+                label="Home"
+                value="home"
+                component={Link}
+                to="/"
+                icon={<Home />}
+              />
+              <BottomNavigationAction
+                label="Projects"
+                value="projects"
+                component={Link}
+                to="/topics"
+                icon={<AccountTree />}
+              />
+              <BottomNavigationAction
+                label="Contact"
+                value="contact"
+                component={Link}
+                to="/about"
+                icon={<Person />}
+              />
+            </BottomNavigation>
+          </AppBar>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 
-function Home() {
+function Home2() {
   return <h2>Home</h2>;
 }
 
