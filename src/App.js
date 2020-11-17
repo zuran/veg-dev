@@ -37,44 +37,6 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <div>
-          <List component="nav">
-            <ListItem button component={Link} to="/">
-              <ListItemText primary="Home" />
-            </ListItem>
-          </List>
-          <ul>
-            <li>
-              <Button
-                component={Link}
-                to="/"
-                variant="contained"
-                color="primary"
-              >
-                Home
-              </Button>
-            </li>
-            <li>
-              <Button
-                component={Link}
-                to="/about"
-                variant="contained"
-                color="primary"
-              >
-                About
-              </Button>
-            </li>
-            <li>
-              <Button
-                component={Link}
-                to="/topics"
-                variant="contained"
-                color="primary"
-              >
-                Topics
-              </Button>
-            </li>
-          </ul>
-
           <Switch>
             <Route path="/about">
               <About />
