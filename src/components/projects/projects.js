@@ -2,25 +2,38 @@ import React from 'react';
 import {
   AppBar,
   Card,
+  CardActions,
   CardActionArea,
   CardContent,
   CardMedia,
+  Chip,
   Container,
   Grid,
+  IconButton,
   makeStyles,
   Toolbar,
+  Tooltip,
   Typography,
 } from '@material-ui/core';
 
-import './projects.css';
+import { Link } from '@material-ui/icons';
 
 const useStyles = makeStyles({
+  container: {
+    background: '#e0f2f1',
+  },
   root: {
-    maxWidth: 345,
-    height: 300,
+    maxWidth: 365,
+    //minHeight: 300,
   },
   media: {
-    height: 140,
+    height: 200,
+  },
+  viewWeb: {
+    marginLeft: 'auto',
+  },
+  grid: {
+    paddingTop: 20,
   },
 });
 
@@ -34,20 +47,20 @@ export default function Projects() {
           <Typography variant="h6">Projects</Typography>
         </Toolbar>
       </AppBar>
-      <Toolbar></Toolbar>
-      <Container>
-        <Grid container spacing={4}>
+
+      <Container className={classes.container}>
+        <Grid container spacing={4} className={classes.grid}>
           <Grid item>
             <Card className={classes.root} raised={true}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
                   image="/images/projects/solar-system_screenshot.png"
-                  title="Solar System Sim"
+                  title="Solar System Simulation"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Solar System Sim
+                    Solar System Simulation
                   </Typography>
                   <Typography
                     variant="body2"
@@ -58,6 +71,20 @@ export default function Projects() {
                     relatively accurate planet positions and scale.
                   </Typography>
                 </CardContent>
+                <CardActions disableSpacing>
+                  <Chip size="small" label="Three.js" />
+                  <Chip size="small" label="VR" />
+                  <Chip size="small" label="Mobile" />
+                  <Tooltip title="Visit Site" placement="left">
+                    <IconButton
+                      href="https://veg.dev"
+                      aria-label="visit site"
+                      className={classes.viewWeb}
+                    >
+                      <Link />
+                    </IconButton>
+                  </Tooltip>
+                </CardActions>
               </CardActionArea>
             </Card>
           </Grid>
@@ -84,6 +111,10 @@ export default function Projects() {
                     Upkins.
                   </Typography>
                 </CardContent>
+                <CardActions disableSpacing>
+                  <Chip size="small" label="VR" />
+                  <Chip size="small" label="Game Jam" />
+                </CardActions>
               </CardActionArea>
             </Card>
           </Grid>
@@ -106,14 +137,84 @@ export default function Projects() {
                     component="p"
                   >
                     An intense asteroid shooter/gem collector similar in style
-                    to Space Pirate Trainer
+                    to Space Pirate Trainer.
                   </Typography>
                 </CardContent>
+                <CardActions disableSpacing>
+                  <Chip size="small" label="VR" />
+                </CardActions>
+              </CardActionArea>
+            </Card>
+          </Grid>
+
+          <Grid item>
+            <Card className={classes.root} raised={true}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image="/images/projects/taroternia_screenshot.png"
+                  title="Taroternia"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Taroternia
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    Created for Oculus Launch Pad 2019, Taroternia is a tarot
+                    inspired journey of self reflection.
+                  </Typography>
+                </CardContent>
+                <CardActions disableSpacing>
+                  <Chip size="small" label="VR" />
+                </CardActions>
+              </CardActionArea>
+            </Card>
+          </Grid>
+
+          <Grid item>
+            <Card className={classes.root} raised={true}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image="/images/projects/avarus_screenshot.png"
+                  title="Avarus"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Avarus
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    A time attack coin matching mobile game created with Justin
+                    Palmer.
+                  </Typography>
+                </CardContent>
+                <CardActions disableSpacing>
+                  <Chip size="small" label="Mobile" />
+                  <Chip size="small" label="Game Jam" />
+                  <Tooltip title="Visit Site" placement="left">
+                    <IconButton
+                      href="https://play.google.com/store/apps/details?id=org.memphisgamedev.avarus"
+                      aria-label="visit site"
+                      className={classes.viewWeb}
+                    >
+                      <Link />
+                    </IconButton>
+                  </Tooltip>
+                </CardActions>
               </CardActionArea>
             </Card>
           </Grid>
         </Grid>
       </Container>
+      <Toolbar></Toolbar>
     </React.Fragment>
   );
 }

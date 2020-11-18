@@ -11,10 +11,9 @@ import {
   AppBar,
   BottomNavigation,
   BottomNavigationAction,
-  Button,
-  List,
-  ListItem,
-  ListItemText,
+  Toolbar,
+  Typography,
+  Container,
   createMuiTheme,
   ThemeProvider,
 } from '@material-ui/core';
@@ -22,11 +21,14 @@ import { AccountTree, Home, Person } from '@material-ui/icons';
 
 import ProjectsRoute from './routes/projects';
 
+import Contact from './components/contact/contact.js';
+import About from './components/about/about.js';
+
 export default function App() {
   const theme = createMuiTheme({
     palette: {
       primary: {
-        main: '#a5d6a7',
+        main: '#00695c',
       },
     },
   });
@@ -39,13 +41,13 @@ export default function App() {
         <div>
           <Switch>
             <Route path="/about">
-              <About />
+              <Contact />
             </Route>
             <Route path="/topics">
               <ProjectsRoute />
             </Route>
             <Route path="/">
-              <Home2 />
+              <About />
             </Route>
           </Switch>
 
@@ -55,7 +57,7 @@ export default function App() {
             style={{ top: 'auto', bottom: 0 }}
           >
             <BottomNavigation
-              value={value}
+              value={value || 'home'}
               onChange={(event, newValue) => {
                 setValue(newValue);
               }}
@@ -91,11 +93,31 @@ export default function App() {
 }
 
 function Home2() {
-  return <h2>Home</h2>;
+  return (
+    <React.Fragment>
+      <AppBar position="sticky">
+        <Toolbar>
+          <Typography variant="h6">Stephen Young</Typography>
+        </Toolbar>
+      </AppBar>
+      <Toolbar></Toolbar>
+      <Container>Nothing to see yet</Container>
+    </React.Fragment>
+  );
 }
 
-function About() {
-  return <h2>Test</h2>;
+function About2() {
+  return (
+    <React.Fragment>
+      <AppBar position="sticky">
+        <Toolbar>
+          <Typography variant="h6">Contact</Typography>
+        </Toolbar>
+      </AppBar>
+      <Toolbar></Toolbar>
+      <Container>Nothing to see yet</Container>
+    </React.Fragment>
+  );
 }
 
 function Topics() {
