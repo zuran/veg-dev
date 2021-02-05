@@ -16,18 +16,19 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import { Link } from '@material-ui/icons';
+import { Link, Shop, YouTube, PictureAsPdf } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   container: {
-    background: '#e0f2f1',
+    paddingTop: 64,
+    paddingBottom: 48,
   },
   root: {
     maxWidth: 365,
     //minHeight: 300,
   },
   media: {
-    height: 200,
+    height: 240,
   },
   viewWeb: {
     marginLeft: 'auto',
@@ -42,7 +43,7 @@ export default function Projects() {
 
   return (
     <React.Fragment>
-      <AppBar position="sticky">
+      <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6">Projects</Typography>
         </Toolbar>
@@ -50,6 +51,62 @@ export default function Projects() {
 
       <Container className={classes.container}>
         <Grid container spacing={4} className={classes.grid}>
+          <Grid item>
+            <Card className={classes.root} raised={true}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image="/images/projects/goth-and-found_screenshot.png"
+                  title="Goth and Found"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Goth and Found
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    2021 Submission to the Global Game jam with a team from San
+                    Diego.
+                  </Typography>
+                </CardContent>
+                <CardActions disableSpacing>
+                  <Chip size="small" label="Arcade" />
+                  <Chip size="small" label="Game Jam" />
+
+                  <Grid container justify="flex-end">
+                    <Grid item>
+                      <Tooltip title="Watch Video" placement="left">
+                        <IconButton
+                          color="primary"
+                          href="https://youtu.be/w5_P2gjf8to"
+                          aria-label="watch video"
+                          className={classes.viewWeb}
+                        >
+                          <YouTube />
+                        </IconButton>
+                      </Tooltip>
+                    </Grid>
+                    <Grid item>
+                      <Tooltip title="Visit Site" placement="left">
+                        <IconButton
+                          color="primary"
+                          href="https://globalgamejam.org/2021/games/goth-and-found-1"
+                          aria-label="visit site"
+                          className={classes.viewWeb}
+                        >
+                          <Link />
+                        </IconButton>
+                      </Tooltip>
+                    </Grid>
+                  </Grid>
+                </CardActions>
+              </CardActionArea>
+            </Card>
+          </Grid>
+
           <Grid item>
             <Card className={classes.root} raised={true}>
               <CardActionArea>
@@ -77,6 +134,7 @@ export default function Projects() {
                   <Chip size="small" label="Mobile" />
                   <Tooltip title="Visit Site" placement="left">
                     <IconButton
+                      color="primary"
                       href="https://veg.dev"
                       aria-label="visit site"
                       className={classes.viewWeb}
@@ -114,6 +172,16 @@ export default function Projects() {
                 <CardActions disableSpacing>
                   <Chip size="small" label="VR" />
                   <Chip size="small" label="Game Jam" />
+                  <Tooltip title="Watch Video" placement="left">
+                    <IconButton
+                      color="primary"
+                      href="https://www.youtube.com/watch?v=sx8FtsRTZEY"
+                      aria-label="watch video"
+                      className={classes.viewWeb}
+                    >
+                      <YouTube />
+                    </IconButton>
+                  </Tooltip>
                 </CardActions>
               </CardActionArea>
             </Card>
@@ -137,11 +205,22 @@ export default function Projects() {
                     component="p"
                   >
                     An intense asteroid shooter/gem collector similar in style
-                    to Space Pirate Trainer.
+                    to Space Pirate Trainer. I created this game as part of an
+                    Unreal Game Development course that I'm contributing to.
                   </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
                   <Chip size="small" label="VR" />
+                  <Tooltip title="Watch Video" placement="left">
+                    <IconButton
+                      color="primary"
+                      href="https://www.youtube.com/watch?v=xNDPvKx1fyg"
+                      aria-label="watch video"
+                      className={classes.viewWeb}
+                    >
+                      <YouTube />
+                    </IconButton>
+                  </Tooltip>
                 </CardActions>
               </CardActionArea>
             </Card>
@@ -199,13 +278,14 @@ export default function Projects() {
                 <CardActions disableSpacing>
                   <Chip size="small" label="Mobile" />
                   <Chip size="small" label="Game Jam" />
-                  <Tooltip title="Visit Site" placement="left">
+                  <Tooltip title="See App In Store" placement="left">
                     <IconButton
+                      color="primary"
                       href="https://play.google.com/store/apps/details?id=org.memphisgamedev.avarus"
-                      aria-label="visit site"
+                      aria-label="see app in store"
                       className={classes.viewWeb}
                     >
-                      <Link />
+                      <Shop />
                     </IconButton>
                   </Tooltip>
                 </CardActions>

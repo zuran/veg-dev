@@ -37,11 +37,11 @@ export default function About() {
           <Typography variant="h6">Stephen Young</Typography>
         </Toolbar>
       </AppBar>
-      <Container className={classes.container}>
+      <div className={classes.container}>
         <Timeline align="alternate">
           <TimelineItem>
             <TimelineSeparator>
-              <TimelineDot>
+              <TimelineDot color="primary">
                 <Devices />
               </TimelineDot>
               <TimelineConnector />
@@ -57,7 +57,7 @@ export default function About() {
           </TimelineItem>
           <TimelineItem>
             <TimelineSeparator>
-              <TimelineDot>
+              <TimelineDot color="primary">
                 <School />
               </TimelineDot>
               <TimelineConnector />
@@ -73,7 +73,7 @@ export default function About() {
           </TimelineItem>
           <TimelineItem>
             <TimelineSeparator>
-              <TimelineDot>
+              <TimelineDot color="primary">
                 <SportsEsports />
               </TimelineDot>
             </TimelineSeparator>
@@ -87,7 +87,7 @@ export default function About() {
             </TimelineContent>
           </TimelineItem>
         </Timeline>
-      </Container>
+      </div>
     </React.Fragment>
   );
 }
